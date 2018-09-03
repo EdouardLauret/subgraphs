@@ -1,0 +1,23 @@
+{
+  "name": "subgraphs",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "npm-run-all": "^4.1.3"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontendProd\"",
+    "sync": "rm -rf backend/www/static && rsync -a frontend/build/ backend/www/ && rm -rf frontend/build",
+    "build": "npm run build --prefix frontend",
+    "frontend": "npm run start --prefix frontend",
+    "frontendProd": "npm-run-all build sync frontend",
+    "backend": "npm run watch --prefix backend",
+    "deployBackend": "npm run deploy --prefix backend",
+    "deploy": "npm-run-all build sync deployBackend",
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm install",
+    "postinstall": "npm-run-all install-frontend install-backend"
+  }
+}

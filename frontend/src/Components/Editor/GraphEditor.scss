@@ -1,0 +1,143 @@
+#ge-container {
+  width: 100%;
+  height: 100%;
+  font-family: 'Courier';
+  font-size: 12px;
+}
+
+#catalogView {
+  width: 200px;
+  height: 100%;
+  float: left;
+  overflow-y: auto;
+}
+
+#propertiesView {
+  width: 200px;
+  height: 100%;
+  float: left;
+  overflow-y: auto;
+}
+
+#canvas {
+  width: calc(100% - 400px);
+  height: 100%;
+  background: #eee;
+  float: left;
+}
+
+#canvas > svg {
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 145px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 1.0;
+  z-index: 2;
+}
+
+#overlay > div {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.nodeHeader rect {
+  fill: #aaa;
+}
+
+.nodeHeader text {
+  font-weight: bold;
+}
+
+.nodeHeader text {
+  font-weight: bold;
+}
+
+.nodeBody rect {
+  fill: #ddd;
+  fill-opacity: 0.8;
+}
+
+.nodeBody circle {
+  stroke: white;
+  stroke-width: 1;
+  fill: black;
+  pointer-events: visible;
+}
+
+.nodeBody circle:hover {
+  fill: #888;
+}
+
+.nodeBody .alias {
+  font-weight: bold;
+}
+
+.nodeOutput text {
+  text-anchor: end;
+}
+
+.nodeAttr rect {
+  fill: #ccc;
+}
+
+.nodeAttr text {
+  pointer-events: none;
+}
+
+.nodeLink {
+  stroke: #555;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3;
+}
+
+.edgePath {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: 0.5;
+}
+
+.edgeCircle {
+  fill: #555;
+  stroke: black;
+  stroke-width: 1;
+}
+
+.selected rect {
+  fill-opacity: 0.5;
+}
+
+.selectionRect {
+  fill: green;
+  fill-opacity: 0.2;
+  stroke: black;
+  stroke-width: 1;
+  stroke-opacity: 0.2;
+}
+
+.contextMenu rect {
+  fill: #fefefe;
+  stroke: #e0e0e0;
+}
+
+.contextMenu rect:hover {
+  fill: #eee;
+}
+
+.contextMenu text {
+  pointer-events: none;
+  fill: black;
+}

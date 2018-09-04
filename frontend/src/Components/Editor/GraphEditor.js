@@ -471,13 +471,13 @@ class GraphEditor extends Component {
 
     enter
     .append('clipPath')
-    .attr('id', 'node-clip')
+    .attr('id', d => `node-clip-${d.id}`)
     .append('rect')
     .attr('width', 150)
     .attr('height', function(d) {
       let numPorts = Math.max(d.inputs.length, d.outputs.length);
       let numAttrs = d.attributes.length;
-      return (2 + numPorts + numAttrs) * 20
+      return (1 + numPorts + numAttrs) * 20
     });
 
     let nodeHeader = enter.append('g')
@@ -492,7 +492,7 @@ class GraphEditor extends Component {
     .append('text')
     .attr('x', 5)
     .attr('y', 16)
-    .attr('clip-path', 'url(#node-clip)')
+    .attr('clip-path', d => `url(#node-clip-${d.id})`)
     .text(d => d.name);
 
     let nodeBody = enter.append('g')
@@ -545,7 +545,8 @@ class GraphEditor extends Component {
       for (let i in d.attributes) {
         output.push({
           offset: 20 * (parseInt(i, 10) + numPorts),
-          attr: d.attributes[i]
+          attr: d.attributes[i],
+          id: d.id
         });
       }
       return output;
@@ -567,7 +568,9 @@ class GraphEditor extends Component {
     .attr('x', 4)
     .attr('y', d => 16 + d.offset)
     .attr('class', d => d.attr.alias ? 'alias' : '')
-    .attr('clip-path', 'url(#node-clip)')
+    .attr('clip-path', function(d) {
+      return `url(#node-clip-${d.id})`;
+    })
     .text(d => `${d.attr.name}: ${d.attr.value}`);
   }
 

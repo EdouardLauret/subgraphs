@@ -8,7 +8,7 @@ class Node {
     KERNEL: 'kernel'
   };
 
-  constructor(title=null, identifier=null, name=null,
+  constructor(title='', identifier='', name='',
               category=Node.categories.GRAPH) {
     this.title = title;
     this.identifier = identifier;
@@ -193,7 +193,7 @@ class Node {
             ports[side].push({
               name: port.alias,
               id: new Port(this.id, side, idx[side]++).id,
-              alias: null
+              alias: ''
             });
           }
         }
@@ -211,7 +211,7 @@ class Node {
           attributes.push({
             name: attr.alias,
             value: attr.value,
-            alias: null
+            alias: ''
           });
         }
       }
